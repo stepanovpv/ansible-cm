@@ -3,11 +3,32 @@
   block:
     - name: Create group
       group:
-        name: "{{ user.group  }}"
+        name: "{{ user.group }}"
 
     - name: Create user
       user:
-        name: "{{ user.login  }}"      
+        name: "{{ user.login }}"      
         password: "{{ user.password | password_hash('sha512')  }}"
         shell: /bin/bash
-        group: "{{ user.group  }}"
+        group: "{{ user.group }}"
+
+    - name: Create directory
+      file:
+        path={{ user.dir }}
+          mode=0755
+          owner="{{ user.login }}"
+          group="{{ user.group }}"
+          state=directory
+
+#    - name: Copy file to remote host
+#      copy:
+#        src: /home/pavel/ansible-cm/roles/user/files/test.txt
+#        dest:{{user.dir }}/test.txt
+
+- name: Install packages
+  package:
+    name:
+      - htop
+      - unzip
+    state: latest
+
