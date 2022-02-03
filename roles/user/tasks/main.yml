@@ -1,0 +1,13 @@
+---
+- name: Create User, Group, Directory
+  block:
+    - name: Create group
+      group:
+        name: "{{ user.group  }}"
+
+    - name: Create user
+      user:
+        name: "{{ user.login  }}"      
+        password: "{{ user.password | password_hash('sha512')  }}"
+        shell: /bin/bash
+        group: "{{ user.group  }}"
