@@ -1,6 +1,6 @@
 galaxy_info:
   author: Poshtatska Kateryna
-  description: Role for deploying wordpress application in existing infrastructure.
+  description: Role for deploying PHP server and support packages for MySQL and FPM.
 
   license: BSD
 
@@ -12,6 +12,7 @@ galaxy_info:
     - focal
 
   galaxy_tags:
-    - wordpress
+    - php
+    - mysql
 
 dependencies: []
