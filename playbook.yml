@@ -16,5 +16,11 @@
     - { role: php,  tags: [php, apps] }
     - { role: wordpress, tags: [wp, apps] }
 
-
+- name: Do some tests
+  hosts: all
+  become: true
+  vars_files:
+    - vars/wordpress_vault.yml
+  roles:
+    - { role: tests, tags: [tests] }
 
