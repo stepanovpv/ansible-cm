@@ -1,0 +1,6 @@
+--- 
+- name: Add mysql
+  hosts: all
+  become: true 
+  roles:   
+    - { role: mysql, tags: [mysql, apps] }
