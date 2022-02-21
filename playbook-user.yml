@@ -1,0 +1,6 @@
+---
+- name: Prepare user
+  hosts: server
+  become: true
+  roles:
+    - { role: user, tags: [prepare] }

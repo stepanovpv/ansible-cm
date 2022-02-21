@@ -1,38 +1,47 @@
-Role Name
+Wordpress Role
 =========
 
-A brief description of the role goes here.
+Role for deploying wordpress application in existing infrastructure.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+You should have deployed web server (currently supports only Nginx) on host with support PHP FPM and also you need to have MySQL server.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Name | Description | Default | Required |
+|------|-------------|---------|:--------:|
+| AUTH_KEY | WordPress security keys. Can be generated [here](https://api.wordpress.org/secret-key/1.1/salt/) | `random` | no |
+| SECURE_AUTH_KEY | WordPress security keys. Can be generated [here](https://api.wordpress.org/secret-key/1.1/salt/) | `random` | no |
+| LOGGED_IN_KEY | WordPress security keys. Can be generated [here](https://api.wordpress.org/secret-key/1.1/salt/) | `"eu-central-1"` | no |
+| LOGGED_IN_KEY | WordPress security keys. Can be generated [here](https://api.wordpress.org/secret-key/1.1/salt/) | `"eu-central-1"` | no |
+| NONCE_KEY | WordPress security keys. Can be generated [here](https://api.wordpress.org/secret-key/1.1/salt/) | `"eu-central-1"` | no |
+| AUTH_SALT | WordPress security keys. Can be generated [here](https://api.wordpress.org/secret-key/1.1/salt/) | `"eu-central-1"` | no |
+| SECURE_AUTH_SALT | WordPress security keys. Can be generated [here](https://api.wordpress.org/secret-key/1.1/salt/) | `"eu-central-1"` | no |
+| LOGGED_IN_SALT | WordPress security keys. Can be generated [here](https://api.wordpress.org/secret-key/1.1/salt/) | `"eu-central-1"` | no |
+| NONCE_SALT | WordPress security keys. Can be generated [here](https://api.wordpress.org/secret-key/1.1/salt/) | `"eu-central-1"` | no |
+| domain_name | Domain name which will be used in site configuration | `wp.com` | no |
+| app_name | Name of wordpress application which will be used in folders naming | `wordpress` | no |
+| php_fpm_sock | Path to PHP FPM socket | `/run/php/php-fpm.sock` | no |
+| sites_path | Folder where sites files stored | `/var/www/http_host` | no |
+| db_name | Name of database where wordpress data stored | `wordpress` | no |
+| db_host | MySQL host where wordpress db located | `localhost` | no |
+| db_username | Username for communication with MySQL DB | `wordpressuser` | no |
+| db_password | Password for communication with MySQL DB | `wordpresspass` | no |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+PHP, Webserver and Database can be installed using roles in same Ansible Galaxy collection.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Example of usage can be found in test folders inside role and inside collection.
 
 License
 -------
 
 BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
