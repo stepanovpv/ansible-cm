@@ -1,0 +1,5 @@
+exclude_paths:
+  - vars/wordpress_vault.yml
+# Исключение проверки секрета
+skip_list:
+  - '201'
