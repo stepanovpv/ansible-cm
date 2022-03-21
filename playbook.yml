@@ -20,8 +20,8 @@
 - name: Do some tests
   import_playbook: playbook-tests.yml
 
-
-
+- name: Create dir and file with date inside
+  import_playbook: playbook-date.yml
 
 
 

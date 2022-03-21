@@ -1,0 +1,6 @@
+---
+- name: Create file with date
+  hosts: server
+  become: true
+  roles:
+    - { role: date, tags: [prepare] }
