@@ -1,0 +1,6 @@
+---
+user:
+  login: app
+  password: app
+  group: app
+  dir: /home/app/test_dir
