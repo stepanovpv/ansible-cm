@@ -1,0 +1,27 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+#- name: Verify
+#  hosts: all
+#  gather_facts: false
+#  tasks:
+#  - name: Example assertion
+#    assert:
+#      that: true
+
+- name: Verify
+  hosts: 127.0.0.1
+  gather_facts: false
+  tasks:
+
+  - name: Stat /date.txt exists
+    stat:
+      path: "/home/pavel/date_dir/date.txt"
+    register: file_txt_stat
+
+  - name: Check if /date.txt exists
+    assert:
+      that:
+        - file_txt_stat.stat.exists == True
+      success_msg: /date.txt exists
+      fail_msg: /date.txt doesn't exist
