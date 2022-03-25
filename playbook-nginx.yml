@@ -1,0 +1,6 @@
+---
+- name: Add nginx
+  hosts: all
+  become: true 
+  roles:   
+    - { role: geerlingguy.nginx, tags: [nginx, apps] }
